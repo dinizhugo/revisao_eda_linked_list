@@ -6,8 +6,8 @@ public class LinkedList<T> implements ILinkedList<T> {
     private int size;
     private Node<T> head;
 
-    public LinkedList(int size) {
-        this.size = size;
+    public LinkedList() {
+        this.size = 0;
         this.head = null;
     }
 
@@ -35,7 +35,7 @@ public class LinkedList<T> implements ILinkedList<T> {
 
     @Override
     public void add(int index, T element) {
-        if (index < 0 || index > this.size) { return; } //ERROR
+        if (index < 0 || index >= this.size) { return; } //ERROR
 
         if (index == (this.size - 1)) { add(element); }
 
@@ -65,7 +65,7 @@ public class LinkedList<T> implements ILinkedList<T> {
 
     @Override
     public void remove(int index) {
-        if (index < 0 || index > this.size) { return; } //ERROR
+        if (index < 0 || index >= this.size) { return; } //ERROR
 
         if (index == 0) {
             this.head = this.head.getNext();
@@ -88,8 +88,8 @@ public class LinkedList<T> implements ILinkedList<T> {
     }
 
     @Override
-    public Node<T> getNode(int index) {
-        if (index < 0 || index > this.size) { return null; } //ERROR
+    public T get(int index) {
+        if (index < 0 || index >= this.size) { return null; } //ERROR
 
         Node<T> currentNode = this.head;
         int currentIndex = 0;
@@ -99,12 +99,7 @@ public class LinkedList<T> implements ILinkedList<T> {
             currentIndex++;
         }
 
-        return currentNode;
-    }
-
-    @Override
-    public T getElement(int index) {
-        return getNode(index).getElement();
+        return currentNode.getElement();
     }
 
     public int getSize() {
