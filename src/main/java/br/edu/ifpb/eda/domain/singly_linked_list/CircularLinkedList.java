@@ -42,9 +42,10 @@ public class CircularLinkedList<T> implements ILinkedList<T> {
             if (this.head == null) {
                 this.head = newNode;
                 newNode.setNext(this.head);
+            }else {
+                newNode.setNext(this.head);
+                this.head = newNode;
             }
-            newNode.setNext(this.head);
-            this.head = newNode;
         } else {
             Node<T> currentNode = this.head;
             int currentIndex = 0;
